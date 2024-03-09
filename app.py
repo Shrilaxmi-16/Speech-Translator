@@ -1,16 +1,14 @@
-# FOCAL CELL: Language Translator
-
 import os
 import time
-import playsound
-import pygame.mixer
+import pygame
 from gtts import gTTS
 import streamlit as st
 import speech_recognition as sr
 from googletrans import LANGUAGES, Translator
 
 isTranslateOn = False
-translator = Translator()  # Initialize the translator module.
+
+translator = Translator() # Initialize the translator module.
 pygame.mixer.init()  # Initialize the mixer module.
 
 # Create a mapping between language names and language codes
@@ -30,9 +28,11 @@ def text_to_voice(text_data, to_language):
     os.remove("cache_file.mp3")
 
 def main_process(output_placeholder, from_language, to_language):
+    
     global isTranslateOn
     
     while isTranslateOn:
+
         rec = sr.Recognizer()
         with sr.Microphone() as source:
             output_placeholder.text("Listening...")
@@ -45,6 +45,7 @@ def main_process(output_placeholder, from_language, to_language):
             
             output_placeholder.text("Translating...")
             translated_text = translator_function(spoken_text, from_language, to_language)
+
             text_to_voice(translated_text.text, to_language)
     
         except Exception as e:
