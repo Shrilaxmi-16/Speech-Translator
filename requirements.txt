@@ -1,0 +1,8 @@
+os                                                                
+time                                                              
+pygame                                                            
+gTTS                                                    
+streamlit                                              
+speech_recognition
+numpy
+pandas
